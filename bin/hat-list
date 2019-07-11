@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+const request = require("request");
+const chalk = require("chalk");
+const logger = require('../lib/logger');
+console.log();
+process.on("exit",()=>{
+    console.log();
+});
+
+request({
+    url:'https://api.github.com/users/ly-templates/repos',
+    headers:{
+        'User-Agent':'hat-cli'
+    }
+},(err,res,body)=>{
+    if(err)
+        logger.fatal(err);
+    const requestBody = JSON.parse(body);
+    if(Array.isArray(requestBody)){
+        console.log('  Available offical templates:')
+        console.log()
+        requestBody.forEach(repo=>{
+            console.log(
+                '  ' + chalk.yellow("★") +
+                '  ' + chalk.blue(repo.name) +
+                ' - ' + repo.description
+            )
+        })
+    }else{
+        console.error(requestBody.message);
+    }
+})
