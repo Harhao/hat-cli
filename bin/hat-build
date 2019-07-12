@@ -1,8 +1,0 @@
-#!/usr/bin/env node
-
-const chalk = require("chalk");
-console.log(chalk.yellow(
-    '\n' +
-    '  We are slimming down hat-cli to optimize the initial installation by ' +
-    'removing the `hat build` command.\n'
-))

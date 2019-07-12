@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const program = require("commander")
+const program = require('commander')
+
 program
-    .version(require("../package").version)
-    .usage('<command> [options]')
-    .command("init","generate a new project from a template")
-    .command("list","list available offical templates")
-    .command("create","(for next version V2 only)")
+  .version(require('../package').version)
+  .usage('<command> [options]')
+  .command('init', 'generate a new project from a template')
+  .command('list', 'list available official templates')
 
 program.parse(process.argv)

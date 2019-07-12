@@ -19,14 +19,18 @@ const localPath = require('../lib/local-path')
 const isLocalPath = localPath.isLocalPath
 const getTemplatePath = localPath.getTemplatePath
 
-
+/**
+ * Usage.
+ */
 
 program
   .usage('<template-name> [project-name]')
   .option('-c, --clone', 'use git clone')
   .option('--offline', 'use cached template')
 
-
+/**
+ * Help.
+ */
 
 program.on('--help', () => {
   console.log('  Examples:')
@@ -35,11 +39,13 @@ program.on('--help', () => {
   console.log('    $ hat init webpack my-project')
   console.log()
   console.log(chalk.gray('    # create a new project straight from a github template'))
-  console.log('    $  hat init username/repo my-project')
+  console.log('    $ hat init username/repo my-project')
   console.log()
 })
 
-
+/**
+ * Help.
+ */
 
 function help () {
   program.parse(process.argv)
@@ -47,7 +53,9 @@ function help () {
 }
 help()
 
-
+/**
+ * Settings.
+ */
 
 let template = program.args[0]
 const hasSlash = template.indexOf('/') > -1
@@ -63,6 +71,9 @@ if (program.offline) {
   template = tmp
 }
 
+/**
+ * Padding.
+ */
 
 console.log()
 process.on('exit', () => {
@@ -85,6 +96,9 @@ if (inPlace || exists(to)) {
   run()
 }
 
+/**
+ * Check, download and generate the project.
+ */
 
 function run () {
   // check if template is local
@@ -122,6 +136,11 @@ function run () {
   }
 }
 
+/**
+ * Download a generate from a template repo.
+ *
+ * @param {String} template
+ */
 
 function downloadAndGenerate (template) {
   const spinner = ora('downloading template')

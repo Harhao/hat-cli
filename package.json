@@ -1,12 +1,11 @@
 {
   "name": "hat-cli",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "a scaffold to generate SPA project ",
   "main": "index.js",
   "bin": {
     "hat": "bin/hat",
     "hat-init": "bin/hat-init",
-    "hat-build": "bin/hat-build",
     "hat-list": "bin/hat-list"
   },
   "scripts": {
@@ -39,5 +38,8 @@
   },
   "engines": {
     "node": ">=6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1"
   }
 }
